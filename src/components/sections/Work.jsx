@@ -110,7 +110,7 @@ export default function Work() {
     {
       "num": "03",
       "type": "Backend & Database",
-      "name": "Bus Management System",
+      "name": "College Management System",
       "desc": "Backend system managing routes, schedules, seat availability, and bookings. Express.js REST APIs handle reservations, cancellations, and admin controls.",
       "tags": [
         "JavaScript",
@@ -118,7 +118,7 @@ export default function Work() {
         "Express.js",
         "REST APIs"
       ],
-      "image": "/BusManage.jpeg",
+      "image": "/image.png",
       "liveLink": "https://example.com",
       "githubLink": "https://github.com/walterhydra"
     },
