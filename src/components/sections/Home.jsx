@@ -61,7 +61,7 @@ export default function Home() {
           <span style={{ display: 'inline-block', width: '8px', height: '8px', borderRadius: '50%', background: '#4ade80', animation: 'pulse 2s infinite' }}></span>
           Available for New Projects
         </span>
-        <a href="/Milan_Pandavadra_CV.pdf" className="btn-cv" download="Milan_Pandavadra_CV.pdf">Download CV</a>
+        <a href="/MILAN_FINAL_RESUME.pdf" className="btn-cv" download="MILAN_FINAL_RESUME.pdf">Download CV</a>
       </div>
       <h1 className="hero-heading" id="heroHeading">
         {headingWords.map((w, wi) => (

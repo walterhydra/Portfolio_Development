@@ -8,15 +8,15 @@ export default function Loader({ onComplete }) {
     if (phase === 'loading') {
       const interval = setInterval(() => {
         setProgress(prev => {
-          const next = prev + Math.floor(Math.random() * 15) + 5;
+          const next = prev + Math.floor(Math.random() * 8) + 2;
           if (next >= 100) {
             clearInterval(interval);
-            setTimeout(() => setPhase('complete'), 400); // slight pause at 100%
+            setTimeout(() => setPhase('complete'), 400); 
             return 100;
           }
           return next;
         });
-      }, 100);
+      }, 60);
       return () => clearInterval(interval);
     } else if (phase === 'complete') {
       const t = setTimeout(() => {
@@ -26,7 +26,7 @@ export default function Loader({ onComplete }) {
     } else if (phase === 'exit') {
       const t = setTimeout(() => {
         onComplete?.();
-      }, 800);
+      }, 1000);
       return () => clearTimeout(t);
     }
   }, [phase, onComplete]);
@@ -38,123 +38,167 @@ export default function Loader({ onComplete }) {
       position: 'fixed',
       inset: 0,
       zIndex: 99999,
-      backgroundColor: '#050505',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      transition: 'opacity 0.8s ease-in-out, transform 0.8s cubic-bezier(0.76, 0, 0.24, 1)',
-      opacity: phase === 'exit' ? 0 : 1,
-      transform: phase === 'exit' ? 'scale(1.05)' : 'scale(1)',
-      color: '#fff',
-      fontFamily: "'Space Grotesk', system-ui, sans-serif",
+      pointerEvents: phase === 'exit' ? 'none' : 'auto',
+      backgroundColor: 'transparent'
     }}>
+      {/* Splash panels for modern split exit animation */}
+      <div style={{
+        position: 'absolute',
+        top: 0, left: 0, width: '100%', height: '50vh',
+        backgroundColor: 'var(--bg, #ffffff)',
+        transition: 'transform 0.8s cubic-bezier(0.76, 0, 0.24, 1)',
+        transform: phase === 'exit' ? 'translateY(-100%)' : 'translateY(0)',
+        zIndex: 1
+      }} className="loader-panel" />
+      <div style={{
+        position: 'absolute',
+        bottom: 0, left: 0, width: '100%', height: '50vh',
+        backgroundColor: 'var(--bg, #ffffff)',
+        transition: 'transform 0.8s cubic-bezier(0.76, 0, 0.24, 1)',
+        transform: phase === 'exit' ? 'translateY(100%)' : 'translateY(0)',
+        zIndex: 1
+      }} className="loader-panel" />
+
+      {/* Main Content */}
       <div style={{
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         width: '100%',
-        maxWidth: '400px',
-        padding: '0 2rem'
+        maxWidth: '500px',
+        padding: '0 2rem',
+        position: 'relative',
+        zIndex: 2,
+        transition: 'opacity 0.4s ease, transform 0.6s cubic-bezier(0.76, 0, 0.24, 1)',
+        opacity: phase === 'exit' ? 0 : 1,
+        transform: phase === 'exit' ? 'scale(0.95)' : 'scale(1)',
       }}>
-        {/* Animated logo/text shape */}
-        <div className="loader-glitch" data-text="SYSTEM_READY" style={{
-          fontSize: '1.2rem',
-          letterSpacing: '0.3em',
-          fontWeight: '600',
-          marginBottom: '2rem',
-          color: phase === 'complete' ? '#fff' : '#666',
-          transition: 'color 0.5s ease',
-          position: 'relative'
+        
+        {/* Geometric animated logo alternative */}
+        <div style={{
+          position: 'relative',
+          width: '70px',
+          height: '70px',
+          marginBottom: '2.5rem'
         }}>
-          {phase === 'complete' ? 'ACCESS_GRANTED' : 'INITIALIZING...'}
+          {/* Inner shape */}
+          <div style={{
+            position: 'absolute',
+            inset: '15px',
+            backgroundColor: 'var(--accent, #6366f1)',
+            opacity: progress / 100,
+            transform: `scale(${0.5 + (0.5 * progress) / 100})`,
+            transition: 'opacity 0.2s, transform 0.2s',
+            borderRadius: '4px'
+          }}></div>
+          
+          {/* Outer rotating borders */}
+          <div style={{
+            position: 'absolute',
+            inset: 0,
+            border: '2px solid var(--text, #0f172a)',
+            borderRadius: '8px',
+            animation: 'loadspin 3s cubic-bezier(0.76, 0, 0.24, 1) infinite'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            inset: 0,
+            border: '2px solid transparent',
+            borderTopColor: 'var(--accent2, #ec4899)',
+            borderBottomColor: 'var(--accent3, #10b981)',
+            borderRadius: '8px',
+            opacity: 0.7,
+            animation: 'loadspin 3s cubic-bezier(0.76, 0, 0.24, 1) infinite reverse'
+          }}></div>
         </div>
 
-        {/* Progress Bar Container */}
+        {/* Text Area */}
+        <div style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'flex-end',
+          width: '100%',
+          marginBottom: '1.2rem',
+          color: 'var(--text, #0f172a)'
+        }}>
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            overflow: 'hidden'
+          }}>
+            <div style={{
+              fontSize: '0.8rem',
+              fontWeight: '700',
+              letterSpacing: '0.3em',
+              textTransform: 'uppercase',
+              color: 'var(--muted, #64748b)',
+              marginBottom: '0.3rem',
+              transform: phase === 'complete' ? 'translateY(20px)' : 'translateY(0)',
+              opacity: phase === 'complete' ? 0 : 1,
+              transition: 'transform 0.5s ease, opacity 0.5s ease',
+            }}>
+              System Initialization
+            </div>
+            <div style={{
+              fontSize: '1.4rem',
+              fontWeight: '600',
+              letterSpacing: '0.1em',
+              fontFamily: 'var(--display, sans-serif)',
+              textTransform: 'uppercase',
+              transform: phase === 'complete' ? 'translateY(100%)' : 'translateY(0)',
+              opacity: phase === 'complete' ? 0 : 1,
+              transition: 'transform 0.5s ease 0.1s, opacity 0.5s ease 0.1s',
+            }}>
+              Loading Portoflio
+            </div>
+          </div>
+          
+          <div style={{
+            fontSize: '3.5rem',
+            fontWeight: '300',
+            fontFamily: 'var(--mono, monospace)',
+            lineHeight: 0.8,
+            display: 'flex',
+            alignItems: 'flex-end',
+            color: phase === 'complete' ? 'var(--accent, #6366f1)' : 'var(--text, #0f172a)',
+            transition: 'color 0.5s ease'
+          }}>
+            {progress}<span style={{ fontSize: '1.2rem', marginLeft: '4px', marginBottom: '4px', color: 'var(--muted, #64748b)' }}>%</span>
+          </div>
+        </div>
+        
+        {/* Sleek Progress Bar */}
         <div style={{
           width: '100%',
           height: '2px',
-          backgroundColor: '#222',
+          backgroundColor: 'var(--border, rgba(0,0,0,0.05))',
           position: 'relative',
-          overflow: 'hidden',
-          marginBottom: '1rem'
+          overflow: 'hidden'
         }}>
-          {/* Progress fill */}
           <div style={{
             position: 'absolute',
             top: 0,
             left: 0,
             height: '100%',
-            backgroundColor: '#5555ff', // Match the spotlight/accent color
+            background: phase === 'complete' ? 'var(--accent3, #10b981)' : 'var(--text, #0f172a)',
             width: `${progress}%`,
-            transition: 'width 0.1s ease-out',
-            boxShadow: '0 0 10px rgba(85,85,255,0.8)'
+            transition: 'width 0.2s ease-out, background 0.5s ease'
           }} />
-        </div>
-
-        {/* Info row */}
-        <div style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          width: '100%',
-          fontFamily: "'Space Grotesk', monospace",
-          fontSize: '0.85rem',
-          color: '#888',
-          letterSpacing: '0.1em'
-        }}>
-          <span>MILAN_PORTFOLIO</span>
-          <span style={{ color: '#fff', fontWeight: 'bold' }}>{progress}%</span>
         </div>
       </div>
 
       <style dangerouslySetInnerHTML={{ __html: `
-        @keyframes scanline {
-          0% { transform: translateY(-100%); }
-          100% { transform: translateY(100vh); }
-        }
-        .loader-glitch::before {
-          content: attr(data-text);
-          position: absolute;
-          left: -2px;
-          text-shadow: 2px 0 red;
-          top: 0;
-          color: white;
-          background: #050505;
-          overflow: hidden;
-          clip: rect(0, 900px, 0, 0); 
-          animation: noise-anim-2 3s infinite linear alternate-reverse;
-        }
-        @keyframes noise-anim-2{
-            0% { clip: rect(78px, 9999px, 86px, 0); }
-            5% { clip: rect(66px, 9999px, 12px, 0); }
-            10% { clip: rect(21px, 9999px, 87px, 0); }
-            15% { clip: rect(93px, 9999px, 83px, 0); }
-            20% { clip: rect(59px, 9999px, 5px, 0); }
-            25% { clip: rect(24px, 9999px, 20px, 0); }
-            30% { clip: rect(80px, 9999px, 30px, 0); }
-            35% { clip: rect(100px, 9999px, 30px, 0); }
-            40% { clip: rect(38px, 9999px, 22px, 0); }
-            45% { clip: rect(31px, 9999px, 60px, 0); }
-            50% { clip: rect(19px, 9999px, 5px, 0); }
-            55% { clip: rect(54px, 9999px, 46px, 0); }
-            60% { clip: rect(58px, 9999px, 53px, 0); }
-            65% { clip: rect(4px, 9999px, 86px, 0); }
-            70% { clip: rect(93px, 9999px, 89px, 0); }
-            75% { clip: rect(66px, 9999px, 55px, 0); }
-            80% { clip: rect(24px, 9999px, 61px, 0); }
-            85% { clip: rect(15px, 9999px, 41px, 0); }
-            90% { clip: rect(73px, 9999px, 22px, 0); }
-            95% { clip: rect(84px, 9999px, 98px, 0); }
-            100% { clip: rect(7px, 9999px, 59px, 0); }
+        @keyframes loadspin {
+          0% { transform: rotate(0deg); }
+          25% { transform: rotate(90deg); }
+          50% { transform: rotate(180deg); }
+          75% { transform: rotate(270deg); }
+          100% { transform: rotate(360deg); }
         }
       `}} />
-      <div style={{
-         position: 'absolute',
-         inset: 0,
-         pointerEvents: 'none',
-         background: 'linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.2) 51%)',
-         backgroundSize: '100% 4px',
-         opacity: 0.1
-      }}></div>
     </div>
   );
 }

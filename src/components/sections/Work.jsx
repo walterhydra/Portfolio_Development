@@ -79,8 +79,8 @@ export default function Work() {
     {
       "num": "01",
       "type": "Full Stack Project",
-      "name": "ERP Management System",
-      "desc": "Web-based ERP to streamline business operations � user management, inventory, billing, reporting. Secure role-based auth for admins, managers, and employees.",
+      "name": "R.F. ELECTROTECH ",
+      "desc": "Web-based ERP to streamline business operations  user management, inventory, billing, reporting. Secure role-based auth for admins, managers, and employees.",
       "tags": [
         "React",
         "Node.js",
@@ -88,7 +88,7 @@ export default function Work() {
         "MongoDB",
         "REST APIs"
       ],
-      "image": "/ERP.jpeg",
+      "image": "/RF copy.png",
       "liveLink": "https://example.com/erp",
       "githubLink": "https://github.com/walterhydra"
     },
