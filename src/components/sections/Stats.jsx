@@ -5,7 +5,7 @@ export default function Stats() {
     <>
       <div className="stats-strip">
         <div className="stat-box reveal">
-          <div className="stat-num"><span className="count" data-target="3">0</span><span>+</span></div>
+          <div className="stat-num"><span className="count" data-target="5">0</span><span>+</span></div>
           <div className="stat-label">Projects Built</div>
         </div>
         <div className="stat-box reveal d1">
