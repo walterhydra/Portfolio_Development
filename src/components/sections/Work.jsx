@@ -89,8 +89,8 @@ export default function Work() {
         "REST APIs"
       ],
       "image": "/RF copy.png",
-      "liveLink": "https://example.com/erp",
-      "githubLink": "https://github.com/walterhydra"
+      "liveLink": "https://rfelectrotech.com/",
+      "githubLink": "https://github.com/walterhydra/R.F.-ELECTROTECH"
     },
     {
       "num": "02",
@@ -105,7 +105,7 @@ export default function Work() {
       ],
       "image": "/Spotify.jpeg",
       "liveLink": "https://example.com/spotify",
-      "githubLink": "https://github.com/walterhydra"
+      "githubLink": "https://github.com/walterhydra/Spotify_Dev"
     },
     {
       "num": "03",
@@ -134,7 +134,7 @@ export default function Work() {
       ],
       "image": "/Askvisa.jpeg",
       "liveLink": "https://askvisa.in/",
-      "githubLink": "#"
+      "githubLink": "https://github.com/walterhydra/ASK-VISA"
     },
     {
       "num": "06",
@@ -148,7 +148,7 @@ export default function Work() {
       ],
       "image": "/flyanytrip.jpeg",
       "liveLink": "https://flyanytrip.com/",
-      "githubLink": "#"
+      "githubLink": "https://github.com/walterhydra/FlyAnyTrip-2.0"
     },
     {
       "num": "07",
@@ -162,7 +162,7 @@ export default function Work() {
       ],
       "image": "/proposal.jpeg",
       "liveLink": "https://sharmajii-ecru.vercel.app/",
-      "githubLink": "#"
+      "githubLink": "#https://github.com/walterhydra/Proposal_Website"
     },
 
   ];
