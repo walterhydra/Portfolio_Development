@@ -13,7 +13,7 @@ export default function Stats() {
           <div className="stat-label">Technologies</div>
         </div>
         <div className="stat-box reveal d2">
-          <div className="stat-num"><span className="count" data-target="3">0</span><span>+</span></div>
+          <div className="stat-num"><span className="count" data-target="6">0</span><span>+</span></div>
           <div className="stat-label">Certifications</div>
         </div>
         <div className="stat-box reveal d3">
