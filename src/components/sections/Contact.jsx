@@ -123,7 +123,7 @@ export default function Contact() {
           <div className="c-label">Email</div><div className="c-val">milanpandavadra84@gmail.com</div>
           <div className="c-label">Based in</div><div className="c-val">Vadodara, Gujarat, India</div>
           <div className="social-links">
-            <a href="https://linkedin.com/in/milan-pandavadra" target="_blank" rel="noreferrer" className="social-link">
+            <a href="https://www.linkedin.com/in/milan-pandavdara/" target="_blank" rel="noreferrer" className="social-link">
               <span className="s-dot" style={{ background: '#0077b5' }}></span>LinkedIn
             </a>
             <a href="https://github.com/walterhydra" target="_blank" rel="noreferrer" className="social-link">
