@@ -104,7 +104,7 @@ export default function Work() {
         "CSS"
       ],
       "image": "/Spotify.jpeg",
-      "liveLink": "https://example.com/spotify",
+      "liveLink": "spotify-dev-eight.vercel.app",
       "githubLink": "https://github.com/walterhydra/Spotify_Dev"
     },
     {
@@ -120,7 +120,7 @@ export default function Work() {
       ],
       "image": "/image.png",
       "liveLink": "https://example.com",
-      "githubLink": "https://github.com/walterhydra"
+      "githubLink": "https://github.com/walterhydra/College_Managment_System"
     },
     {
       "num": "05",
