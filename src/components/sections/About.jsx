@@ -74,7 +74,7 @@ export default function About() {
                 <div style={{ display: 'flex', flexDirection: 'row', flex: 1, width: '100%', alignItems: 'center', padding: '0 1rem' }}>
                   {/* Left Side: QR Code */}
                   <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', borderRight: '1px solid rgba(255,255,255,0.1)' }}>
-                    <img src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent("https://wa.me/917383303388?text=hii , Hello! 👋 I came across your business card and I'm very interested in collaborating with you on a project. 💻✨ Could we connect and discuss further? Looking forward to hearing from you! ")}`} alt="Scan for WhatsApp" style={{ width: '130px', height: '130px', borderRadius: '8px', background: '#fff', padding: '8px' }} />
+                    <img src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent("https://wa.me/917383303388?text=Hello 👋 I found your business card and would love to connect to discuss a potential collaboration. Looking forward to your response. ")}`} alt="Scan for WhatsApp" style={{ width: '130px', height: '130px', borderRadius: '8px', background: '#fff', padding: '8px' }} />
                     <p style={{ fontSize: '0.65rem', color: 'var(--muted)', marginTop: '0.8rem', textTransform: 'uppercase', letterSpacing: '2px', fontWeight: '700' }}>Scan to connect</p>
                   </div>
 
