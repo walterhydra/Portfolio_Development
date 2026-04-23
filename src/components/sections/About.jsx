@@ -69,18 +69,18 @@ export default function About() {
               {/* BACK OF CARD */}
               <div className="edu-card-back" style={{ padding: '0', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
                 {/* Magnetic Stripe */}
-                <div style={{ width: '100%', height: '45px', background: 'linear-gradient(90deg, #050505 0%, #151515 50%, #050505 100%)', boxShadow: 'inset 0 -1px 2px rgba(255,255,255,0.1), 0 3px 5px rgba(0,0,0,0.5)', marginTop: '2rem', zIndex: 1 }}></div>
+                <div className="edu-card-stripe" style={{ width: '100%', height: '45px', background: 'linear-gradient(90deg, #050505 0%, #151515 50%, #050505 100%)', boxShadow: 'inset 0 -1px 2px rgba(255,255,255,0.1), 0 3px 5px rgba(0,0,0,0.5)', marginTop: '2rem', zIndex: 1 }}></div>
 
-                <div style={{ display: 'flex', flexDirection: 'row', flex: 1, width: '100%', alignItems: 'center', padding: '0 1rem' }}>
+                <div className="edu-card-content" style={{ display: 'flex', flexDirection: 'row', flex: 1, width: '100%', alignItems: 'center', padding: '0 1rem' }}>
                   {/* Left Side: QR Code */}
-                  <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', borderRight: '1px solid rgba(255,255,255,0.1)' }}>
+                  <div className="edu-card-qr" style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', borderRight: '1px solid rgba(255,255,255,0.1)' }}>
                     <img src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent("https://wa.me/917383303388?text=Hello 👋 I found your business card and would love to connect to discuss a potential collaboration. Looking forward to your response. ")}`} alt="Scan for WhatsApp" style={{ width: '130px', height: '130px', borderRadius: '8px', background: '#fff', padding: '8px' }} />
                     <p style={{ fontSize: '0.65rem', color: 'var(--muted)', marginTop: '0.8rem', textTransform: 'uppercase', letterSpacing: '2px', fontWeight: '700' }}>Scan to connect</p>
                   </div>
 
                   {/* Right Side: Details */}
-                  <div style={{ flex: 1, padding: '1.5rem 2rem', textAlign: 'left', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                    <div style={{ display: 'flex', gap: '1.5rem', marginBottom: '1.2rem' }}>
+                  <div className="edu-card-details" style={{ flex: 1, padding: '1.5rem 2rem', textAlign: 'left', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                    <div className="edu-card-details-inner" style={{ display: 'flex', gap: '1.5rem', marginBottom: '1.2rem' }}>
                       <div style={{ flex: 1 }}>
                         <div className="detail-label" style={{ color: 'var(--accent)', marginBottom: '0.3rem' }}>Experience</div>
                         <p style={{ fontSize: '1rem', color: 'var(--text)', fontWeight: '700' }}>Freelance Dev</p>

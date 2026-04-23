@@ -334,6 +334,11 @@ nav.scrolled {
   align-items: center
 }
 
+/* Mobile Actions Wrapper */
+.mobile-actions {
+  display: none;
+}
+
 /* Nav Toggle (Mobile Hamburger) */
 .nav-toggle {
   display: none;
@@ -2222,13 +2227,17 @@ footer {
   .contact-grid,
   .stats-strip,
   .skills-rings-grid {
-    grid-template-columns: 1fr
+    grid-template-columns: 1fr !important;
   }
 
   .stat-box {
     border-right: none;
     border-bottom: 1px solid var(--border);
     padding: 1.5rem;
+  }
+
+  .contact-card {
+    padding: 1.5rem !important;
   }
 
   nav {
@@ -2239,12 +2248,30 @@ footer {
     display: none; /* Hide standard nav on mobile */
   }
 
+  .mobile-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem; /* Space between dark mode and hamburger */
+    position: relative;
+    z-index: 10001;
+    pointer-events: auto;
+  }
+
   .nav-toggle {
     display: flex;
-    min-width: 44px;
-    min-height: 44px;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    min-height: 20px;
+    align-items: stretch;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    position: relative;
+    z-index: 10002;
+    pointer-events: auto;
   }
 
   section {
@@ -2283,34 +2310,126 @@ footer {
 
   .edu-card-wrapper {
     width: 100%;
-    height: auto;
+    height: 250px !important;
+    min-height: 250px !important;
     aspect-ratio: auto;
-    min-height: 500px;
     max-width: 100%;
   }
 
   .edu-card-front, .edu-card-back {
-    padding: 1.5rem;
+    padding: 1.2rem !important;
   }
 
   .edu-card-front {
-    flex-direction: column !important;
-    text-align: center;
-    gap: 1.5rem;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    text-align: left !important;
+    gap: 0.5rem !important;
   }
 
-  .edu-card-front > div {
-    text-align: center !important;
+  .edu-card-front > div:first-child {
+    text-align: left !important;
     padding-right: 0 !important;
+    width: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .edu-card-front > div:first-child h3 {
+    font-size: 1.4rem !important;
+    white-space: nowrap !important;
+  }
+  
+  .edu-card-front > div:first-child p {
+    font-size: 0.9rem !important;
+  }
+
+  .edu-card-front > div:nth-child(n+3) {
+    display: none !important;
   }
 
   .edu-avatar {
-    width: 100px;
-    height: 100px;
+    width: 90px !important;
+    height: 90px !important;
+    border: 3px solid rgba(255,255,255,0.1) !important;
+    margin: 0 !important;
+    flex-shrink: 0 !important;
   }
 
-  .edu-card-back > div {
+  .edu-card-stripe {
+    margin-top: 0.8rem !important;
+    height: 30px !important;
+  }
+
+  .edu-card-content {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    padding: 0 !important;
+    align-items: center !important;
+    width: 100% !important;
+    height: calc(100% - 45px) !important;
+  }
+
+  .edu-card-qr {
+    display: flex !important;
     flex-direction: column !important;
+    border-right: 1px solid rgba(255,255,255,0.1) !important;
+    border-bottom: none !important;
+    padding: 0.5rem !important;
+    width: 45% !important;
+    min-width: 45% !important;
+  }
+
+  .edu-card-qr img {
+    width: 90px !important;
+    height: 90px !important;
+  }
+  
+  .edu-card-qr p {
+    font-size: 0.5rem !important;
+    margin-top: 0.5rem !important;
+    text-align: center !important;
+  }
+
+  .edu-card-details {
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 0.5rem 0.8rem !important;
+    text-align: left !important;
+    justify-content: flex-start !important;
+    width: 55% !important;
+    min-width: 55% !important;
+  }
+  
+  .edu-card-details-inner {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+    width: 100% !important;
+  }
+  
+  .edu-card-details h3,
+  .edu-card-details p,
+  .edu-card-details .detail-label {
+    font-size: 0.6rem !important;
+    line-height: 1.2 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .edu-card-back .detail-label {
+    margin-bottom: 0.1rem !important;
+  }
+
+  .tl-tag {
+    font-size: 0.55rem !important;
+    padding: 0.1rem 0.3rem !important;
   }
 
   .edu-card-back .detail-label {
@@ -2352,6 +2471,90 @@ footer {
     right: 10px !important;
     width: 44px !important;
     height: 44px !important;
+  }
+
+  /* Universal Mobile Fixes */
+  body {
+    overflow-x: hidden;
+  }
+
+  #home {
+    padding-top: 7rem !important;
+  }
+
+  .hero-role-row {
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 0.5rem;
+  }
+
+  .contact-big-title {
+    font-size: clamp(2rem, 8vw, 2.5rem);
+  }
+
+  .timeline {
+    padding-left: 1.5rem;
+  }
+
+  .tl-dot {
+    left: -1.05rem;
+  }
+
+  .glowing-dot {
+    left: -21px !important;
+  }
+
+  .cert-row {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .cert-id {
+    margin-left: 0;
+    margin-top: 0.5rem;
+  }
+
+  .skill-ring-card {
+    padding: 1.5rem;
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+
+  .modal-cover-image {
+    min-height: 150px !important;
+  }
+
+  /* Project Card Mobile Fixes */
+  .project-card {
+    padding: 1.5rem !important;
+  }
+  
+  .project-card:hover .project-card-content {
+    transform: none !important;
+  }
+  
+  .project-links {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    margin-top: 1.5rem !important;
+    flex-direction: column !important;
+    gap: 0.8rem !important;
+  }
+
+  .project-btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  .project-card-num {
+    font-size: 3rem !important;
   }
 }
 

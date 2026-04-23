@@ -54,16 +54,19 @@ export default function Navbar({ scrolled }) {
           </li>
         </ul>
 
-        {/* Mobile Toggle */}
-        <button 
-          className={`nav-toggle ${isMenuOpen ? 'open' : ''}`} 
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label="Toggle Menu"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+        {/* Mobile Actions */}
+        <div className="mobile-actions">
+          <button className="theme-btn" onClick={toggleTheme} aria-label="Toggle Theme"></button>
+          <button 
+            className={`nav-toggle ${isMenuOpen ? 'open' : ''}`} 
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle Menu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
       </nav>
 
       {/* Mobile Drawer */}
