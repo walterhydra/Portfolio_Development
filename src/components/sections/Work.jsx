@@ -45,10 +45,17 @@ function ProjectCard({ num, type, name, desc, tags, isSpecial, liveLink, githubL
 
       <div className="project-links">
         {liveLink && (
-          <a href={liveLink} target="_blank" rel="noreferrer" className="project-btn live-btn interactive" onClick={(e) => e.stopPropagation()}>
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-            Live Demo
-          </a>
+          liveLink === "coming-soon" ? (
+            <button className="project-btn live-btn interactive" onClick={(e) => { e.stopPropagation(); alert('Live Demo is Coming Soon!'); }} style={{ cursor: 'not-allowed', opacity: 0.7, background: 'transparent', border: '1px solid var(--border)', color: 'var(--text)' }}>
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              Coming Soon
+            </button>
+          ) : (
+            <a href={liveLink} target="_blank" rel="noreferrer" className="project-btn live-btn interactive" onClick={(e) => e.stopPropagation()}>
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              Live Demo
+            </a>
+          )
         )}
         {githubLink && (
           <a href={githubLink} target="_blank" rel="noreferrer" className="project-btn github-btn interactive" onClick={(e) => e.stopPropagation()}>
@@ -131,7 +138,7 @@ export default function Work({ onModalChange }) {
         "REST APIs"
       ],
       "image": "/image.png",
-      "liveLink": "https://example.com",
+      "liveLink": "coming-soon",
       "githubLink": "https://github.com/walterhydra/College_Managment_System"
     },
     {
@@ -229,10 +236,17 @@ export default function Work({ onModalChange }) {
             </div>
             <div className="modal-actions">
               {activeProject.liveLink && activeProject.liveLink !== '#' && (
-                <a href={activeProject.liveLink} target="_blank" rel="noreferrer" className="project-btn live-btn">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                  Visit Live Site
-                </a>
+                activeProject.liveLink === "coming-soon" ? (
+                  <button className="project-btn live-btn" onClick={() => alert('Live Demo is Coming Soon!')} style={{ cursor: 'not-allowed', opacity: 0.7, background: 'transparent', border: '1px solid var(--border)', color: 'var(--text)' }}>
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    Coming Soon
+                  </button>
+                ) : (
+                  <a href={activeProject.liveLink} target="_blank" rel="noreferrer" className="project-btn live-btn">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    Visit Live Site
+                  </a>
+                )
               )}
               {activeProject.githubLink && activeProject.githubLink !== '#' && (
                 <a href={activeProject.githubLink} target="_blank" rel="noreferrer" className="project-btn github-btn">
