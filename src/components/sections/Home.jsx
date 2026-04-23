@@ -87,11 +87,11 @@ export default function Home() {
           Designing fault-tolerant backend infrastructures and precision-crafted interfaces that turn ambitious ideas into polished, production-ready realities.
         </p>
         
-        <div className="hero-actions" style={{ display: 'flex', gap: '1rem', marginTop: '2.5rem', pointerEvents: 'auto' }}>
-          <a href="#work" style={{ padding: '0.8rem 1.8rem', background: 'var(--text)', color: 'var(--bg)', borderRadius: '30px', textDecoration: 'none', fontWeight: '600', transition: 'all 0.3s ease' }} onMouseOver={e => e.currentTarget.style.transform = 'translateY(-3px)'} onMouseOut={e => e.currentTarget.style.transform = 'translateY(0)'}>
+        <div className="hero-actions" style={{ marginTop: '2.5rem', pointerEvents: 'auto' }}>
+          <a href="#work" style={{ display: 'inline-flex', padding: '0.8rem 1.8rem', background: 'var(--text)', color: 'var(--bg)', borderRadius: '30px', textDecoration: 'none', fontWeight: '600', transition: 'all 0.3s ease', marginBottom: '1rem', marginRight: '1rem' }} onMouseOver={e => e.currentTarget.style.transform = 'translateY(-3px)'} onMouseOut={e => e.currentTarget.style.transform = 'translateY(0)'}>
             Explore My Work
           </a>
-          <a href="#contact" style={{ padding: '0.8rem 1.8rem', background: 'var(--text)', color: 'var(--bg)', borderRadius: '30px', textDecoration: 'none', fontWeight: '600', transition: 'all 0.3s ease' }} onMouseOver={e => e.currentTarget.style.transform = 'translateY(-3px)'} onMouseOut={e => e.currentTarget.style.transform = 'translateY(0)'}>
+          <a href="#contact" style={{ display: 'inline-flex', padding: '0.8rem 1.8rem', background: 'var(--text)', color: 'var(--bg)', borderRadius: '30px', textDecoration: 'none', fontWeight: '600', transition: 'all 0.3s ease' }} onMouseOver={e => e.currentTarget.style.transform = 'translateY(-3px)'} onMouseOut={e => e.currentTarget.style.transform = 'translateY(0)'}>
             Let's Talk
           </a>
         </div>

@@ -67,10 +67,12 @@ const CursorBlob = memo(function CursorBlob({ isHidden }) {
     };
   }, [isHidden]);
 
-  if (isHidden) return null;
-
   return (
-    <div className={`custom-cursor ${isActive ? 'active' : ''}`} ref={cursorRef}></div>
+    <div 
+      className={`custom-cursor ${isActive ? 'active' : ''}`} 
+      ref={cursorRef}
+      style={{ opacity: isHidden ? 0.3 : 1, transition: 'opacity 0.3s ease' }}
+    ></div>
   );
 });
 

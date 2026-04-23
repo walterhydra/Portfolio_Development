@@ -33,14 +33,14 @@ export default function Certifications({ onModalChange }) {
       desc: "8 practical case studies — SQL, data cleaning, dashboards, presentations.",
       icon: "🏆",
       id: "90FC6312C20B",
-      link: "/SQL.pdf"
+      link: "/SQL_page-0001.jpg"
     },
     {
       name: "Spotify Clone using React",
       desc: "2-day hands-on project building a production-grade React.js web app.",
       icon: "🎵",
       id: "LUESCAPR1251238",
-      link: "/spotify clone.pdf"
+      link: "/spotify clone_page-0001.jpg"
     },
     {
       name: "Google Cloud Associate Cloud Engineer",
@@ -61,7 +61,7 @@ export default function Certifications({ onModalChange }) {
       desc: "Hands-on experience in building and deploying Android applications.",
       icon: "📱",
       id: "App Dev Certified",
-      link: "/ANDROID.pdf"
+      link: "/ANDROID_page-0001.jpg"
     },
     {
       name: "Hackathon Winner",
@@ -91,7 +91,7 @@ export default function Certifications({ onModalChange }) {
       desc: "Successfully completed the certification requirements.",
       icon: "📜",
       id: "CERT-DFG3DBOK",
-      link: "/certificate-dfg3dbokkbo7-1773830603.pdf"
+      link: "/certificate-dfg3dbokkbo7-1773830603_page-0001.jpg"
     }
   ];
 
@@ -182,14 +182,34 @@ export default function Certifications({ onModalChange }) {
             onClick={(e) => e.stopPropagation()}
           >
             {selectedCert.toLowerCase().endsWith('.pdf') ? (
-              <embed
-                src={`${selectedCert}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
-                type="application/pdf"
-                width="100%"
-                height="100%"
-                style={{ border: 'none', outline: 'none', maxWidth: '100%', maxHeight: '100%' }}
-                title="Certificate Viewer"
-              />
+              <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '2rem' }}>
+                {/* PDF Fallback for Mobile */}
+                <div className="mobile-only" style={{ textAlign: 'center', padding: '2rem' }}>
+                   <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>📄</div>
+                   <h3 style={{ color: '#fff', marginBottom: '1rem' }}>PDF Certificate</h3>
+                   <p style={{ color: 'rgba(255,255,255,0.6)', marginBottom: '2rem' }}>PDF viewing is best on desktop. Tap below to view or download.</p>
+                   <a 
+                    href={selectedCert} 
+                    target="_blank" 
+                    rel="noreferrer" 
+                    className="project-btn live-btn"
+                    style={{ padding: '1rem 2rem', fontSize: '1rem' }}
+                   >
+                     Open Certificate
+                   </a>
+                </div>
+                
+                <div className="desktop-only" style={{ width: '100%', height: '100%' }}>
+                  <embed
+                    src={`${selectedCert}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
+                    type="application/pdf"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 'none', outline: 'none' }}
+                    title="Certificate Viewer"
+                  />
+                </div>
+              </div>
             ) : (
               <img
                 src={selectedCert}

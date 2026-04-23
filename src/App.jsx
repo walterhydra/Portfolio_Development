@@ -144,30 +144,26 @@ function App() {
       {loading && <Loader onComplete={handleLoaderComplete} />}
       <div id="prog" style={{ width: `${scrollProgress}%` }}></div>
       <Spotlight />
-      <ParticleCanvas isPaused={isModalOpen} />
-      <CursorBlob isHidden={isModalOpen} />
+      <ParticleCanvas isPaused={false} />
+      <CursorBlob isHidden={false} />
       
-      <Navbar scrolled={scrolled} style={{ visibility: isModalOpen ? 'hidden' : 'visible' }} />
-      <div style={{ visibility: isModalOpen ? 'hidden' : 'visible' }}>
-        <SideDock />
-        <SectionDots activeSection={activeSection} />
-        <BackToTop show={showBTT} />
-      </div>
+      <Navbar scrolled={scrolled} />
+      <SideDock />
+      <SectionDots activeSection={activeSection} />
+      <BackToTop show={showBTT} />
 
-      <main style={{ visibility: isModalOpen ? 'hidden' : 'visible' }}>
+      <main>
         <Home />
         <Stats />
         <Skills />
-        <Work />
+        <Work onModalChange={setIsModalOpen} />
         <Certifications onModalChange={setIsModalOpen} />
         <Experience />
         <About />
         <Contact />
       </main>
 
-      <div style={{ visibility: isModalOpen ? 'hidden' : 'visible' }}>
-        <Footer />
-      </div>
+      <Footer />
     </>
   );
 }

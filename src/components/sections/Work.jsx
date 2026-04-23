@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 function ProjectCard({ num, type, name, desc, tags, isSpecial, liveLink, githubLink, onClick }) {
   const cardRef = useRef(null);
@@ -61,18 +61,30 @@ function ProjectCard({ num, type, name, desc, tags, isSpecial, liveLink, githubL
   );
 }
 
-export default function Work() {
+export default function Work({ onModalChange }) {
   const splitTitle = "Work & Projects".split(' ');
   const [activeProject, setActiveProject] = useState(null);
 
-  const openProject = (project) => {
-    setActiveProject(project);
-    document.body.style.overflow = 'hidden';
+  const openProject = (p) => {
+    setActiveProject(p);
   };
+
+  useEffect(() => {
+    if (activeProject) {
+      document.body.classList.add('lock-scroll');
+      if (onModalChange) onModalChange(true);
+    } else {
+      document.body.classList.remove('lock-scroll');
+      if (onModalChange) onModalChange(false);
+    }
+    return () => {
+      document.body.classList.remove('lock-scroll');
+      if (onModalChange) onModalChange(false);
+    };
+  }, [activeProject, onModalChange]);
 
   const closeProject = () => {
     setActiveProject(null);
-    document.body.style.overflow = '';
   };
 
   const projectsData = [
@@ -189,7 +201,7 @@ export default function Work() {
       {activeProject && (
         <div className="project-modal-overlay" onClick={closeProject}>
           <div className="project-modal-content" onClick={e => e.stopPropagation()}>
-            <button className="modal-close-btn" onClick={closeProject}>?</button>
+            <button className="modal-close-btn" onClick={closeProject}>&times;</button>
             <div className="modal-header">
               <div className="modal-type">{activeProject.type}</div>
               <h3 className="modal-name">{activeProject.name}</h3>
